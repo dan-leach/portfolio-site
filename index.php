@@ -26,6 +26,7 @@
     
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+
     
     <style>
         html {
@@ -58,16 +59,64 @@
             vertical-align: text-top;
             text-align: center;
         }
+        .ml5 {
+          position: relative;
+          font-weight: 300;
+          font-size: 2.5em;
+          color: black;
+        }
+        .ml5 .text-wrapper {
+          position: relative;
+          display: inline-block;
+          padding-top: 0.1em;
+          padding-right: 0.05em;
+          padding-bottom: 0.15em;
+          line-height: 1em;
+        }
+        .ml5 .line {
+          opacity: 0;
+          position: absolute;
+          left: 0;
+          top: 0;
+          bottom: 0;
+          margin: auto;
+          height: 3px;
+          width: 100%;
+          background-color: black;
+          transform-origin: 0.5 0;
+        }
+        .ml5 .letters {
+          display: inline-block;
+          opacity: 0;
+        }
+        .ml5 .letters-left {
+          font-weight: 500;
+        }
+
     </style>
 
 </head>
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-sm bg-info navbar-light">
-            <button type="button" class="btn navbar-brand" @click="$router.push('/', function() {})"><h2><strong>>_</strong>  Dan Leach</h2></button>
+            <button type="button" class="btn navbar-brand" @click="$router.push('/', function() {})">
+                <h1 class="ml5">
+                    <span class="text-wrapper">
+                        <span class="line line1"></span>
+                        <span class="letters letters-left">>_</span>
+                        <span class="letters letters-right">&nbsp;Dan Leach</span>
+                        <span class="line line2"></span>
+                    </span>
+                </h1>
+            </button>
         </nav>
         <br>
         <div class="container">
+            <div id="loader">
+                <div class="spinner-border"></div>    
+                Loading... please wait
+                <img src="avatar.png" onload="showGallery()" hidden>\
+            </div>
             <router-view></router-view>
         </div>
         <footer class="bg-info">
@@ -78,7 +127,9 @@
               </ul>
         </footer>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
     <script src="app.js"></script>
+    
 </body>
 </html>
 
